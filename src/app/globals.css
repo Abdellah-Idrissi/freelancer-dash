@@ -2,26 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
+@layer theme {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --color-text: 9 9 11;
+    --color-bg: 255 255 255;
+    --color-hover: 241 245 249;
+
+    --color-primary: 121 84 182;
+    --color-secondary: 0 207 132;
+    --color-accent: 84 145 182;
+  }
+
+  :root.dark {
+    --color-text: 255 255 255;
+    --color-bg: 9 9 11;
+    --color-hover: 39 39 42;
+    --glass-color: 9 9 11 0.75
+
+    --color-primary: 121 84 182;
+    --color-secondary: 0 207 132;
+    --color-accent: 84 145 182;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.iconHover {
+  @apply w-[30px] h-[30px] lg:w-[33px] lg:h-[33px] hover:bg-slate-100/80 dark:hover:bg-neutral-800 grid place-items-center duration-300 transition-colors rounded-md
+}
+
+.glassEffect {
+  @apply bg-[#ffffffa6] dark:bg-[#09090bbf] backdrop-blur-[7.6px]
+}
+
+.recharts-wrapper {
 }
