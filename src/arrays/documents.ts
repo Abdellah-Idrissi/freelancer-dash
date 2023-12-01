@@ -1,0 +1,1 @@
+export const documents = ['kanban','calendar','clients','projects']

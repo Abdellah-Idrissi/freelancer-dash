@@ -1,19 +1,19 @@
-import Header from '@/components/main/Header'
-import React from 'react'
-import { secondFont } from '../layout'
-import Aside from '@/components/Aside'
+import Aside from "@/components/navigation/Aside";
+import DashWrapper from "@/components/wrappers/DashWrapper";
+import { auth } from "@clerk/nextjs";
 
-export default function layout({children}: {children: React.ReactNode}) {
+export default function layout({ children }: { children: React.ReactNode }) {
+
+  const {userId} = auth()
+
+  if(!userId) {
+    return <>{children}</>
+  }
+
   return (
-    <div className='lg:flex'>
-
-      <Aside font={secondFont.className}/>
-
-      <div className='flex-1'>
-        <Header font={secondFont.className}/>
-        {children}
-      </div>
-
+    <div>
+      <Aside/>
+      <DashWrapper>{children}</DashWrapper>
     </div>
-  )
+  );
 }

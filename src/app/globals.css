@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 
-@layer theme {
   :root {
     --color-text: 9 9 11;
     --color-bg: 255 255 255;
@@ -12,19 +11,49 @@
     --color-primary: 121 84 182;
     --color-secondary: 0 207 132;
     --color-accent: 84 145 182;
+    --scrollbar-truck: 241 241 241;
+    --scrollbar-thumb: 193 193 193;
+    --scrollbar-thumb-hover: 168 168 168;
+    --fc-highlight-color: #ffedd5;
+    --fc-today-bg-color: rgba(255,220,40,.15);
+    --fc-list-event-hover-bg-color: #f8fafc;
+    --fc-border-color: #ddd;
   }
 
   :root.dark {
     --color-text: 255 255 255;
     --color-bg: 9 9 11;
-    --color-hover: 39 39 42;
+    --color-hover: 38 38 38;
     --glass-color: 9 9 11 0.75
 
     --color-primary: 121 84 182;
     --color-secondary: 0 207 132;
     --color-accent: 84 145 182;
+    --scrollbar-truck: 66 66 66;
+    --scrollbar-thumb: 104 104 104;
+    --scrollbar-thumb-hover: 123 123 123;
+    --fc-highlight-color: #ff920063;
+    --fc-today-bg-color: #27272a94;
+    --fc-list-event-hover-bg-color: #17171788;
+    --fc-border-color: #40404096;
   }
-}
+
+  ::-webkit-scrollbar {
+    @apply w-[15px] h-[15px] 
+  }
+
+
+  ::-webkit-scrollbar-track {
+    @apply bg-scrollbarTruck
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-scrollbarThumb hover:bg-scrollbarThumbHover transition-colors duration-200 rounded-[8px] ;
+    border: 5px solid transparent;
+    background-clip: content-box;
+  }
+
+
 
 .iconHover {
   @apply w-[30px] h-[30px] lg:w-[33px] lg:h-[33px] hover:bg-slate-100/80 dark:hover:bg-neutral-800 grid place-items-center duration-300 transition-colors rounded-md
@@ -34,5 +63,130 @@
   @apply bg-[#ffffffa6] dark:bg-[#09090bbf] backdrop-blur-[7.6px]
 }
 
-.recharts-wrapper {
+.fill-tremor-content-emphasis  {
+  @apply text-[25px] md:text-[30px] !text-textColor
 }
+
+body.__className_6ff133 {
+  @apply !pointer-events-auto
+}
+
+[data-sonner-toast][data-styled=true] {
+  @apply !bg-bgColor !text-textColor !border dark:!border-neutral-700/60 
+}
+
+[data-sonner-toast] [data-close-button] {
+  @apply dark:!bg-bgColor dark:hover:!bg-neutral-900 dark:!text-textColor dark:!border-neutral-700/60 
+}
+
+.breakword{
+  word-break: break-word;
+}
+
+.dash-height {
+  min-height: calc(100vh - 72px)
+}
+
+
+
+
+
+.authFormStyle {
+  @apply bg-neutral-950 p-[20px] rounded-md shadow-md 900screen:shadow-none;
+}
+
+.labelStyle {
+  @apply mb-[5px] block text-neutral-900 cursor-pointer;
+}
+
+.inputStyle {
+  @apply px-[10px] py-[7px] border bg-neutral-950 border-neutral-700/60 block mb-2 text-[15px] font-light w-full rounded-md text-neutral-300 placeholder:text-neutral-400
+  focus:outline-none placeholder:text-[13px] placeholder:capitalize;
+}
+
+/*========= CALENDAR STYLES =========*/
+
+.fc .fc-toolbar {
+  @apply !flex-col !items-center  !gap-y-3 md:!flex-row
+}
+
+.fc-toolbar-title {
+  @apply inline-flex leading-none items-center justify-center rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 border border-neutral-200 bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 !text-[19px] pt-[10px] p-3 px-4  
+} 
+
+.fc .fc-button:focus {
+  @apply !shadow-none;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:disabled {
+  @apply !shadow-none  !bg-white !text-neutral-900 !border-neutral-900 !opacity-100
+}
+
+.fc .fc-button-primary:disabled {
+  @apply !cursor-not-allowed
+}
+
+.fc .fc-button-primary {
+  @apply !bg-neutral-900 !text-white !border-neutral-900 
+}
+
+.fc .fc-button-primary:not(:disabled) {
+  @apply  hover:!bg-white hover:!text-neutral-900 !transition-colors !duration-200
+}
+
+.fc-theme-standard .fc-list-day-cushion {
+  @apply !bg-hoverColor dark:!bg-[#171717]
+}
+
+.fc-h-event , .fc-v-event {
+  @apply !bg-orange-500 dark:!bg-orange-400 !border-none
+}
+
+.fc-daygrid-event-dot , .fc-list-event-dot {
+  @apply !border-orange-500 dark:!border-orange-400
+}
+
+.fc-timegrid-event-harness-inset .fc-timegrid-event, .fc-timegrid-event.fc-event-mirror, .fc-timegrid-more-link {
+  @apply !shadow-none
+}
+
+.fc-theme-standard .fc-popover {
+  @apply dark:!bg-neutral-900 dark:!border-neutral-700/60 
+}
+
+.fc-theme-standard .fc-popover-header {
+  @apply dark:!bg-neutral-800
+}
+
+.fc-daygrid-dot-event.fc-event-mirror, .fc-daygrid-dot-event {
+  @apply dark:hover:!bg-neutral-800
+}
+
+/*============ TO ADD HORIZONTALL SCROLL TO CALENDAR ============*/
+.fc-view {
+  @apply min-w-[700px]
+}
+
+.fc-view-harness.fc-view-harness-active {
+  @apply overflow-x-auto
+}
+
+
+.dropDownItem {
+  @apply relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-neutral-100 focus:text-neutral-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-neutral-800 dark:focus:text-neutral-50 hover:bg-slate-200
+}
+
+/*========================*/
+
+
+.popoverSelectWith {
+  width: var(--radix-popper-anchor-width);
+}
+
+.themeDropDownWidth {
+  width: var( --radix-dropdown-menu-trigger-width);
+ 
+}
+

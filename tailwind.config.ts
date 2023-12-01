@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  
+
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}"
+    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
 
   theme: {
@@ -42,6 +42,9 @@ module.exports = {
         secondaryColor: "rgb(var(--color-secondary) / <alpha-value>)",
         accentColor: "rgb(var(--color-accent) / <alpha-value>)",
         hoverColor: "rgb(var(--color-hover) / <alpha-value>)",
+        scrollbarTruck: "rgb(var(--scrollbar-truck) / <alpha-value>)",
+        scrollbarThumb: "rgb(var(--scrollbar-thumb) / <alpha-value>)",
+        scrollbarThumbHover: "rgb(var(--scrollbar-thumb-hover) / <alpha-value>)",
 
         // light mode
         tremor: {
@@ -67,7 +70,7 @@ module.exports = {
           },
           content: {
             subtle: "#9ca3af", // gray-400
-            DEFAULT: "#6b7280", // gray-500
+            DEFAULT: "#000000", // gray-500
             emphasis: "#374151", // gray-700
             strong: "#111827", // gray-900
             inverted: "#ffffff", // white
@@ -86,36 +89,41 @@ module.exports = {
           background: {
             muted: "#131A2B", // custom
             subtle: "#1f2937", // gray-800
-            DEFAULT: "#111827", // gray-900
+            DEFAULT: "#09090B", // gray-900
             emphasis: "#d1d5db", // gray-300
           },
           border: {
-            DEFAULT: "#1f2937", // gray-800
+            DEFAULT: "#262626", // gray-800
           },
           ring: {
             DEFAULT: "#4040408c", // gray-800
           },
           content: {
             subtle: "#4b5563", // gray-600
-            DEFAULT: "#6b7280", // gray-500
+            DEFAULT: "#ffff", // white
             emphasis: "#e5e7eb", // gray-200
             strong: "#f9fafb", // gray-50
             inverted: "#000000", // black
           },
-        }
+        },
       },
       screens: {
-        'xxl':'1400px'
+        "900screen": "900px",
+        xxl: "1400px",
       },
       boxShadow: {
         // light
         "tremor-input": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        "tremor-card": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-        "tremor-dropdown": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "tremor-card":
+          "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "tremor-dropdown":
+          "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
         // dark
         "dark-tremor-input": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        "dark-tremor-card": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-        "dark-tremor-dropdown": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "dark-tremor-card":
+          "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "dark-tremor-dropdown":
+          "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
       },
       borderRadius: {
         "tremor-small": "0.375rem",
@@ -124,14 +132,20 @@ module.exports = {
       },
       fontSize: {
         "tremor-label": ["0.75rem"],
-        "tremor-default": ["0.875rem", { lineHeight: "1.25rem" }],
+        "tremor-default": ["0.90rem", { lineHeight: "1.25rem" }],
         "tremor-title": ["1.125rem", { lineHeight: "1.75rem" }],
         "tremor-metric": ["1.875rem", { lineHeight: "2.25rem" }],
       },
+      backgroundImage: {
+        hero: "url('/authbg.avif')",
+      },
+      fontFamily: {
+        "secondFont": "var(--second-font)",
+        "futura": "var(--futura-font)"
+      }
     },
-    
   },
-
+  
   safelist: [
     {
       pattern:
@@ -162,5 +176,5 @@ module.exports = {
     },
   ],
 
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require('@tailwindcss/container-queries')],
 };
