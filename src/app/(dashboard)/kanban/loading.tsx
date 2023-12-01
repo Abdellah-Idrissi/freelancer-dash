@@ -1,6 +1,13 @@
 import { Skeleton } from "@/components/ui/skeleton";
+import { auth } from "@clerk/nextjs";
 
 export default function KanbanLoading() {
+  const {userId} = auth()
+
+  if(!userId) {
+    return <></>
+  }
+
   return (
     <div className="px-[20px] lg:px-[30px] flex flex-col gap-4 pb-5 ">
       <Skeleton className="w-full h-[39px] grid place-items-center">

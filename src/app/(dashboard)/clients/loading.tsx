@@ -1,6 +1,13 @@
 import { Skeleton } from "@/components/ui/skeleton";
+import { auth } from "@clerk/nextjs";
 
 export default function ClientsLoading() {
+  const {userId} = auth()
+
+  if(!userId) {
+    return <></>
+  }
+
   return (
     <div className="px-[20px] lg:px-[30px] flex flex-col gap-5 pb-5">
       <div className="flex flex-col gap-5 md:flex-row md:justify-between  ">
