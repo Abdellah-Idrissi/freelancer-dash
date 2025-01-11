@@ -32,7 +32,7 @@ const futurA = localFont({
 
 export const metadata: Metadata = {
   title: "Freelancer Dash",
-  description: "Freelancer Dash is a fullstack dashboard created by Abdellah Moumen El Idrissi",
+  description: "Freelancer Dash is a fullstack dashboard",
   icons: [
     {
       rel: "icon",
